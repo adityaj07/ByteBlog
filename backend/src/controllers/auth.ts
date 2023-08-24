@@ -46,7 +46,7 @@ export const Signup: RequestHandler<
 
     req.session.userId = newUser._id;
 
-    res.status(201).json(newUser);
+    res.status(201).json({message: "New user created successfully",user: newUser});
   } catch (error) {
     next(error);
   }
@@ -87,7 +87,7 @@ export const Login: RequestHandler<
     }
 
     req.session.userId = user._id;
-    res.status(200).json(user);
+    res.status(200).json({message: "Logged in successfully",user: user});
   } catch (error) {
     next(error);
   }
@@ -98,7 +98,7 @@ export const Logout: RequestHandler = (req, res, next) => {
     if (error) {
       next(error);
     } else {
-      res.sendStatus(200);
+      res.status(200).json({message:"Logged out successfully"});
     }
   });
 };
