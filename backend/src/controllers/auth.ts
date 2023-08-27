@@ -3,6 +3,17 @@ import userModel from "../models/user";
 import bcrypt from "bcrypt";
 import createHttpError from "http-errors";
 
+export const getAuthenticatedUser: RequestHandler = async (req, res, next) => {
+  const authenticatedUserId = req.session.userId;
+  try {
+    const user = await userModel.findById(authenticatedUserId).select("+email").exec();
+
+    res.status(200).json({message: "User found", user: user})
+  } catch (error) {
+    next(error)
+  }
+}
+
 interface SignupBody {
   username?: string;
   email?: string;
@@ -102,3 +113,4 @@ export const Logout: RequestHandler = (req, res, next) => {
     }
   });
 };
+

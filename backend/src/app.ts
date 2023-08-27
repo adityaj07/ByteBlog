@@ -26,7 +26,7 @@ app.use(session({
     }),
 }))
 
-app.use("/auth", authRouter);
+app.use("/api/auth", authRouter);
 
 app.use((req, res, next) => {
     next(createHttpError(404, "Endpoint not found!"));
