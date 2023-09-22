@@ -1,16 +1,23 @@
-import './App.css'
-import { Button } from './components/ui/button'
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Home from "./Pages/Home";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
-  const handleButtonClick = () => {
-    alert("JAI SHRI RAM");
-  };
-
   return (
     <>
-      <Button onClick={handleButtonClick}>Bolo Jai Shri Ram</Button>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
+      </Routes>
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
